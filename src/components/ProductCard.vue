@@ -1,6 +1,10 @@
 <template>
-  <q-card flat bordered class="my-card q-ma-sm" style="width: 250px">
-    <q-img :src="img" :alt="name" style="height: 200px" />
+  <q-card class="my-card q-ma-sm" flat bordered style="width: 250px">
+    <q-img
+      :src="img"
+      :alt="name"
+      style="height: 200px"
+    />
 
     <q-card-section>
       <div class="text-subtitle1">{{ name }}</div>
@@ -8,14 +12,20 @@
     </q-card-section>
 
     <q-card-actions align="right">
-      <q-btn color="primary" label="Beli" @click="buy" />
+      <q-btn
+        color="primary"
+        icon="shopping_cart"
+        label="Beli Sekarang"
+        @click="buyProduct"
+        class="q-mr-sm"
+      />
     </q-card-actions>
   </q-card>
 </template>
 
 <script setup>
-import { defineProps } from 'vue'
 import { Notify } from 'quasar'
+import { defineProps } from 'vue'
 
 const props = defineProps({
   name: String,
@@ -23,11 +33,11 @@ const props = defineProps({
   img: String
 })
 
-const buy = () => {
+const buyProduct = () => {
   Notify.create({
-    message: `${props.name} ditambahkan ke keranjang!`,
+    message: `${props.name} berhasil ditambahkan ke keranjang!`,
     color: 'positive',
-    icon: 'shopping_cart'
+    icon: 'check_circle'
   })
 }
 </script>
